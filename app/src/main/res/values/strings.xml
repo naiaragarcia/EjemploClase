@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">EjemploClase</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_ejercicio">EjercicioActivity</string>
+    <string name="title_activity_seguimiento">SeguimientoActivity</string>
+</resources>
