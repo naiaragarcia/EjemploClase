@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/ejercicio_layout">
 
 
     <TextView android:text="LALALA"
@@ -15,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Subir fichero"
-        android:onClick="subirFichero"/>
+        android:onClick="sendFile"/>
 
     <Button
         android:layout_width="match_parent"

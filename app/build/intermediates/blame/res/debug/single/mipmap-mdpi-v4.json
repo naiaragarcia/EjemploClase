@@ -1,10 +1,6 @@
 [
     {
-        "merged": "/home/alumno/EjemploClase/EjemploClase/app/build/intermediates/res/merged/debug/mipmap-mdpi-v4/ic_launcher.png",
-        "source": "/home/alumno/EjemploClase/EjemploClase/app/src/main/res/mipmap-mdpi/ic_launcher.png"
-    },
-    {
-        "merged": "/home/alumno/Descargas/EjemploClase/app/build/intermediates/res/merged/debug/mipmap-mdpi-v4/ic_launcher.png",
-        "source": "/home/alumno/Descargas/EjemploClase/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+        "merged": "C:\\Users\\Naiara\\Downloads\\EjemploClase\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\Naiara\\Downloads\\EjemploClase\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     }
 ]
