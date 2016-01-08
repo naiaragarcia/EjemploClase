@@ -12,8 +12,24 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 public class MenuActivity extends AppCompatActivity
 {
+    public final static String EXTRA_TEST = "es.tta.ejemplo1.test";
+    public final static String EXTRA_AUTH = "es.tta.ejemplo1.auth";
+
+    private RestClient restC;
+    private String dni, passwd;
+    private TextView userView, lessonView;
+    private JSONObject status;
+    private String name, lessonNumber, lessonTitle;
+    private int nextTest, nextExercise;
+    private String auth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,16 +37,61 @@ public class MenuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        TextView tv1=(TextView)findViewById(R.id.menu_login);
-        tv1.setText("TITULO1");
 
-        TextView tv2=(TextView)findViewById(R.id.menu_login2);
-        tv2.setText("TITULO2");
+        //CONEXION A SERVIDOR
+        Intent intent = getIntent();
+        dni = intent.getStringExtra(MainActivity.EXTRA_LOGIN);
+        passwd = intent.getStringExtra(MainActivity.EXTRA_PASSWD);
+
+        userView = (TextView)findViewById(R.id.menu_login);
+        lessonView = (TextView)findViewById(R.id.menu_login2);
+
+        restC = new RestClient("http://u017633.ehu.eus:18080/AlumnoTta/rest/tta");
+        restC.setHttpBasicAuth(dni, passwd);
+        auth = restC.getAuthorization();
+
+        new Thread(new Runnable() {
+            public void run()
+            {
+                try
+                {
+                    status = restC.getJson("getStatus?dni=" + dni);
+                    name = status.getString("user");
+                    lessonNumber = status.getString("lessonNumber");
+                    lessonTitle = status.getString("lessonTitle");
+                    nextTest = status.getInt("nextTest");
+                    nextExercise = status.getInt("nextExercise");
+
+                    userView.post(new Runnable()
+                    {
+                        public void run()
+                        {
+                            userView.setText("Bienvenido " + name);
+                        }
+                    });
+
+                    lessonView.post(new Runnable()
+                    {
+                        public void run()
+                        {
+                            lessonView.setText("Leccion " + lessonNumber + ": " + lessonTitle);
+                        }
+                    });
+                }
+                catch (IOException e)
+                {
+                }
+                catch (JSONException e)
+                {
+                }
+            }
+        }).start();
     }
 
     public void test(View view)
     {
         Intent intent = new Intent(this,TestActivity.class);
+        intent.putExtra(EXTRA_AUTH, auth);
         startActivity(intent);
     }
 
