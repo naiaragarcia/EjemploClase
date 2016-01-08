@@ -24,6 +24,13 @@ public class AudioPlayer implements MediaController.MediaPlayerControl, MediaPla
         controller = new MediaController(view.getContext())
         {
             @Override
+<<<<<<< HEAD
+=======
+            public void hide()
+            {}
+
+            @Override
+>>>>>>> 3eb04ce8245b8048347e9a924783d5ab45bdbf2e
             public boolean dispatchKeyEvent(KeyEvent event)
             {
                 if(event.getKeyCode()==KeyEvent.KEYCODE_BACK)

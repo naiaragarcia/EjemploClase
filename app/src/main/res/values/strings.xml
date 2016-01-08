@@ -8,8 +8,11 @@
     <string name="no_camera">El dispositivo no tiene camara</string>
     <string name="no_app">No hay ninguna app que ejecute la camara</string>
     <string name="no_micro">El dispositivo no tiene microfono</string>
+<<<<<<< HEAD
 
     <string name="menu_greeting">Bienvenido</string>
     <string name="menu_leccion">Leccion</string>
     <string name="title_activity_model">ModelActivity</string>
+=======
+>>>>>>> 3eb04ce8245b8048347e9a924783d5ab45bdbf2e
 </resources>

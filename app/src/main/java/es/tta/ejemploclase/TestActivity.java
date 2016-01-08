@@ -1,6 +1,9 @@
 package es.tta.ejemploclase;
 
+<<<<<<< HEAD
 import android.content.Context;
+=======
+>>>>>>> 3eb04ce8245b8048347e9a924783d5ab45bdbf2e
 import android.provider.Settings;
 import android.content.Intent;
 import android.graphics.Color;
@@ -26,6 +29,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
+<<<<<<< HEAD
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -42,6 +46,13 @@ public class TestActivity extends AppCompatActivity
     private RadioGroup opcionesView;
     private Context contexto = this;
 
+=======
+
+public class TestActivity extends AppCompatActivity
+{
+    private String advise = "<h1>My First Heading</h1> <p>My first paragraph.</p>";
+    //private String advise = "http://www.google.com";
+>>>>>>> 3eb04ce8245b8048347e9a924783d5ab45bdbf2e
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -145,6 +156,7 @@ public class TestActivity extends AppCompatActivity
         }
     }
 
+<<<<<<< HEAD
     //private void showVideo(String advise)
     public void showVideo(View view)
     {
@@ -175,6 +187,59 @@ public class TestActivity extends AppCompatActivity
         video.setMediaController(controller);
 
         LinearLayout layout = (LinearLayout)findViewById(R.id.audio_layout);
+=======
+    //private void showHtml(String advise)
+    public void showHtml(View view)//SUSTITUIR POR LA DE ARRIBA ¡OJO! Tiene que ser public
+    {
+        if(advise.substring(0,10).contains("://"))
+        {
+            Toast.makeText(this, "ENTRO EN PRIMER CASO", Toast.LENGTH_SHORT).show();
+            Uri uri =Uri.parse(advise);
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(intent);
+        }
+        else
+        {
+            Toast.makeText(this, "ENTRO EN SEGUNDO CASO", Toast.LENGTH_SHORT).show();
+            WebView web = new WebView(this);
+            web.loadData(advise, "text/html", null);
+            web.setBackgroundColor(Color.TRANSPARENT);
+            web.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
+            LinearLayout layout = (LinearLayout)findViewById(R.id.test_layout);
+            layout.addView(web);
+        }
+    }
+
+    //private void showVideo(String advise)
+    public void showVideo(View view)
+    {
+        VideoView video = new VideoView(this);
+        //video.setVideoURI(Uri.parse(advise));
+        video.setVideoURI(Uri.parse("http://www.semanticdevlab.com/abc.mp4"));
+        ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        video.setLayoutParams(params);
+
+        MediaController controller = new MediaController(this)
+        {
+            @Override
+            public void hide()
+            {}
+
+            @Override
+            public boolean dispatchKeyEvent(KeyEvent event)
+            {
+                if(event.getKeyCode()==KeyEvent.KEYCODE_BACK)
+                {
+                    finish();
+                }
+                return super.dispatchKeyEvent(event);
+            }
+        };
+        controller.setAnchorView(video);
+        video.setMediaController(controller);
+
+        LinearLayout layout = (LinearLayout)findViewById(R.id.test_layout);
+>>>>>>> 3eb04ce8245b8048347e9a924783d5ab45bdbf2e
         layout.addView(video);
         video.start();
     }
